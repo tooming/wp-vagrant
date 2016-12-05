@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 
+# allow remote access for root user
+mysql -u root -p$mysql_root_password -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '$mysql_root_password' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+
 # if $wp_db_name is specified, then create the database and user (if neccesary)
 
 if [ ! -z $wp_db_name ] ; then
